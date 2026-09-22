@@ -1,0 +1,16 @@
+{
+	"nodes":[
+		{"id":"n_department","type":"text","x":0,"y":0,"width":280,"height":160,"color":"6","text":"# Department\n\n**PK** ID : int\nDeptCode : nvarchar\nName : nvarchar"},
+		{"id":"n_jobposition","type":"text","x":0,"y":220,"width":280,"height":130,"color":"6","text":"# JobPosition\n\n**PK** ID : int\nName : nvarchar"},
+		{"id":"n_location","type":"text","x":0,"y":420,"width":280,"height":160,"color":"6","text":"# Location\n\n**PK** ID : int\nName : nvarchar\n**FK** ResidentialOfficeID : int → Location.ID"},
+		{"id":"n_customer","type":"text","x":0,"y":640,"width":280,"height":160,"color":"6","text":"# Customer\n(read-only)\n\n**PK** ID : int\nName : nvarchar\n**FK** LocalCustomerRepID : int → Employee.ID"},
+		{"id":"n_employee","type":"text","x":450,"y":220,"width":340,"height":200,"color":"4","text":"# Employee\n\n**PK** ID : int\nFirstName : nvarchar\nLastName : nvarchar\n**FK** JobPositionID : int → JobPosition.ID\n**FK** LocationID : int → Location.ID\n**FK** DepartmentID : int → Department.ID\n**FK** ResidentialOfficeID : int → Location.ID\n... (см. группу 1)"}
+	],
+	"edges":[
+		{"id":"e_emp_department","fromNode":"n_employee","fromSide":"left","toNode":"n_department","toSide":"right","label":"M : 1","color":"1"},
+		{"id":"e_emp_jobposition","fromNode":"n_employee","fromSide":"left","toNode":"n_jobposition","toSide":"right","label":"M : 1","color":"1"},
+		{"id":"e_emp_location","fromNode":"n_employee","fromSide":"left","toNode":"n_location","toSide":"right","label":"M : 1","color":"1"},
+		{"id":"e_customer_employee","fromNode":"n_customer","fromSide":"right","toNode":"n_employee","toSide":"bottom","label":"M : 1","color":"1"},
+		{"id":"e_location_self","fromNode":"n_location","fromSide":"bottom","toNode":"n_location","toSide":"right","label":"1 : M (самоссылка)","color":"6"}
+	]
+}

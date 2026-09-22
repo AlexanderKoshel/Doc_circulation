@@ -1,0 +1,92 @@
+{
+  "nodes": [
+    {
+      "id": "n_role",
+      "type": "text",
+      "x": 0,
+      "y": 0,
+      "width": 280,
+      "height": 160,
+      "color": "5",
+      "text": "# Role\n\n**PK** ID : int\nName : nvarchar\nDescription : nvarchar"
+    },
+    {
+      "id": "n_rolefeatures",
+      "type": "text",
+      "x": 400,
+      "y": 0,
+      "width": 300,
+      "height": 160,
+      "color": "5",
+      "text": "# RoleFeatures\n\n**PK, FK** RoleID : int → Role.ID\n**PK, FK** FeatureID : int → (справочник функций)"
+    },
+    {
+      "id": "n_employeeroles",
+      "type": "text",
+      "x": 400,
+      "y": 220,
+      "width": 300,
+      "height": 140,
+      "color": "4",
+      "text": "# EmployeeRoles\n\n**PK, FK** EmployeeID : int → Employee.ID\n**PK, FK** RoleID : int → Role.ID"
+    },
+    {
+      "id": "n_employee",
+      "type": "text",
+      "x": 800,
+      "y": 220,
+      "width": 260,
+      "height": 140,
+      "color": "4",
+      "text": "# Employee\n\n**PK** ID : int\nFirstName : nvarchar\nLastName : nvarchar\n... (см. группу 1)"
+    },
+    {
+      "id": "n_feature",
+      "type": "text",
+      "x": 400,
+      "y": -200,
+      "width": 280,
+      "height": 120,
+      "color": "6",
+      "text": "# Feature\n(справочник функций)\n\n**PK** ID : int\nName : nvarchar"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e_role_rolefeatures",
+      "fromNode": "n_role",
+      "fromSide": "right",
+      "toNode": "n_rolefeatures",
+      "toSide": "left",
+      "label": "1 : M",
+      "color": "1"
+    },
+    {
+      "id": "e_role_employeeroles",
+      "fromNode": "n_role",
+      "fromSide": "bottom",
+      "toNode": "n_employeeroles",
+      "toSide": "left",
+      "label": "1 : M",
+      "color": "1"
+    },
+    {
+      "id": "e_employeeroles_employee",
+      "fromNode": "n_employeeroles",
+      "fromSide": "right",
+      "toNode": "n_employee",
+      "toSide": "left",
+      "label": "M : 1",
+      "color": "1"
+    },
+    {
+      "id": "e_feature_rolefeatures",
+      "fromNode": "n_feature",
+      "fromSide": "right",
+      "toNode": "n_rolefeatures",
+      "toSide": "top",
+      "label": "1 : M",
+      "color": "6"
+    }
+  ]
+}

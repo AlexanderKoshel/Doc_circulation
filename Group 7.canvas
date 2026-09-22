@@ -1,0 +1,17 @@
+{
+	"nodes":[
+		{"id":"n_skill","type":"text","x":400,"y":0,"width":280,"height":130,"color":"6","text":"# Skill\n\n**PK** ID : int\nName : nvarchar"},
+		{"id":"n_skilllevel","type":"text","x":400,"y":200,"width":280,"height":130,"color":"6","text":"# SkillLevel\n\n**PK** ID : int\nName : nvarchar"},
+		{"id":"n_skilljobpositions","type":"text","x":400,"y":400,"width":340,"height":150,"color":"5","text":"# SkillJobPositions\n\n**PK, FK** SkillID : int → Skill.ID\n**PK, FK** JobPositionID : int → JobPosition.ID"},
+		{"id":"n_employeeskill","type":"text","x":800,"y":0,"width":340,"height":220,"color":"4","text":"# EmployeeSkill\n\n**PK** ID : int\n**FK** EmployeeID : int → Employee.ID\n**FK** SkillID : int → Skill.ID\nProficiency : nvarchar\n**FK** LevelID : int → SkillLevel.ID\nIsMain : bit\nInfo : nvarchar"},
+		{"id":"n_jobposition","type":"text","x":800,"y":400,"width":300,"height":130,"color":"6","text":"# JobPosition\n\n**PK** ID : int\nName : nvarchar"},
+		{"id":"n_employee","type":"text","x":0,"y":0,"width":300,"height":160,"color":"4","text":"# Employee\n\n**PK** ID : int\nFirstName : nvarchar\nLastName : nvarchar\n... (см. группу 1)"}
+	],
+	"edges":[
+		{"id":"e_emp_employeeskill","fromNode":"n_employee","fromSide":"right","toNode":"n_employeeskill","toSide":"left","label":"1 : M","color":"1"},
+		{"id":"e_skill_employeeskill","fromNode":"n_skill","fromSide":"right","toNode":"n_employeeskill","toSide":"left","label":"1 : M","color":"6"},
+		{"id":"e_skilllevel_employeeskill","fromNode":"n_skilllevel","fromSide":"right","toNode":"n_employeeskill","toSide":"left","label":"1 : M","color":"6"},
+		{"id":"e_skill_skilljobpositions","fromNode":"n_skill","fromSide":"bottom","toNode":"n_skilljobpositions","toSide":"top","label":"1 : M","color":"6"},
+		{"id":"e_jobposition_skilljobpositions","fromNode":"n_jobposition","fromSide":"bottom","toNode":"n_skilljobpositions","toSide":"right","label":"1 : M","color":"6"}
+	]
+}

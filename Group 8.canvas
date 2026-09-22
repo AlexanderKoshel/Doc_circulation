@@ -1,0 +1,24 @@
+{
+	"nodes":[
+		{"id":"n_hwoowner","type":"text","x":0,"y":0,"width":280,"height":130,"color":"6","text":"# HWOwner\n\n**PK** ID : int\nName : nvarchar"},
+		{"id":"n_hwusage","type":"text","x":400,"y":0,"width":340,"height":200,"color":"4","text":"# HWUsage\n\n**PK** ID : int\n**FK** HWID : int → (справочник оборудования)\n**FK** EmployeeID : int → Employee.ID\nStartDate : date\nEndDate : date"},
+		{"id":"n_hardwarestatus","type":"text","x":0,"y":200,"width":280,"height":120,"color":"6","text":"# HardwareStatus\n\n**PK** ID : int\nName : nvarchar"},
+		{"id":"n_hardwaretype","type":"text","x":0,"y":360,"width":280,"height":120,"color":"6","text":"# HardwareType\n\n**PK** ID : int\nName : nvarchar"},
+		{"id":"n_itresource","type":"text","x":400,"y":300,"width":340,"height":160,"color":"4","text":"# ITResource\n\n**PK** ID : int\nName : nvarchar\n**FK** TypeID : int → ITResourceType.ID"},
+		{"id":"n_itresourcehistory","type":"text","x":800,"y":300,"width":340,"height":150,"color":"5","text":"# ITResourceHistory\n\n**PK** ID : int\n**FK** ResourceID : int → ITResource.ID\nChangeDate : datetime"},
+		{"id":"n_itresourcestate","type":"text","x":0,"y":560,"width":280,"height":120,"color":"6","text":"# ITResourceState\n\n**PK** ID : int\nName : nvarchar"},
+		{"id":"n_itresourcesubtype","type":"text","x":0,"y":720,"width":280,"height":120,"color":"6","text":"# ITResourceSubType\n\n**PK** ID : int\nName : nvarchar"},
+		{"id":"n_itresourcetype","type":"text","x":0,"y":880,"width":280,"height":120,"color":"6","text":"# ITResourceType\n\n**PK** ID : int\nName : nvarchar"},
+		{"id":"n_employee","type":"text","x":800,"y":0,"width":300,"height":160,"color":"4","text":"# Employee\n\n**PK** ID : int\nFirstName : nvarchar\nLastName : nvarchar\n... (см. группу 1)"}
+	],
+	"edges":[
+		{"id":"e_hwoowner_hwusage","fromNode":"n_hwoowner","fromSide":"right","toNode":"n_hwusage","toSide":"left","label":"1 : M","color":"6"},
+		{"id":"e_employee_hwusage","fromNode":"n_employee","fromSide":"left","toNode":"n_hwusage","toSide":"right","label":"1 : M","color":"1"},
+		{"id":"e_hardwarestatus_hwusage","fromNode":"n_hardwarestatus","fromSide":"right","toNode":"n_hwusage","toSide":"left","label":"1 : M","color":"6"},
+		{"id":"e_hardwaretype_hwusage","fromNode":"n_hardwaretype","fromSide":"right","toNode":"n_hwusage","toSide":"left","label":"1 : M","color":"6"},
+		{"id":"e_itresourcetype_itresource","fromNode":"n_itresourcetype","fromSide":"right","toNode":"n_itresource","toSide":"left","label":"1 : M","color":"6"},
+		{"id":"e_itresource_history","fromNode":"n_itresource","fromSide":"right","toNode":"n_itresourcehistory","toSide":"left","label":"1 : M","color":"5"},
+		{"id":"e_itresourcestate_itresource","fromNode":"n_itresourcestate","fromSide":"right","toNode":"n_itresource","toSide":"left","label":"1 : M","color":"6"},
+		{"id":"e_itresourcesubtype_itresource","fromNode":"n_itresourcesubtype","fromSide":"right","toNode":"n_itresource","toSide":"left","label":"1 : M","color":"6"}
+	]
+}

@@ -1,0 +1,40 @@
+{
+	"nodes":[
+		{"id":"n_vacationrequest","type":"text","x":400,"y":0,"width":360,"height":240,"color":"4","text":"# VacationRequest\n\n**PK** ID : int\nFromDate : date\nToDate : date\n**FK** EmployeeID : int → Employee.ID\n**FK** StatusID : int → VacationStatus.ID\nReason : nvarchar\nRequestDate : date\n**FK** ApproveEmployeeID : int → Employee.ID"},
+		{"id":"n_vacationrequesthistory","type":"text","x":800,"y":0,"width":340,"height":160,"color":"5","text":"# VacationRequestHistory\n\n**PK** ID : int\n**FK** VacationRequestID : int → VacationRequest.ID\n**FK** StatusID : int → VacationStatus.ID\nChangeDate : datetime"},
+		{"id":"n_vacationstatus","type":"text","x":800,"y":200,"width":300,"height":120,"color":"6","text":"# VacationStatus\n\n**PK** ID : int\nName : nvarchar"},
+		{"id":"n_vacationtracking","type":"text","x":800,"y":360,"width":340,"height":160,"color":"5","text":"# VacationTracking\n\n**PK** ID : int\n**FK** EmployeeID : int → Employee.ID\n**FK** VacationRequestID : int → VacationRequest.ID\n**FK** StatusID : int → VacationStatus.ID"},
+		{"id":"n_vacationsendnotifyto","type":"text","x":800,"y":560,"width":340,"height":160,"color":"5","text":"# VacationSendNotifyTo\n\n**PK** ID : int\n**FK** VacationRequestID : int → VacationRequest.ID\n**FK** EmployeeID : int → Employee.ID"},
+		{"id":"n_unpaidvacationrequest","type":"text","x":400,"y":800,"width":360,"height":200,"color":"4","text":"# UnpaidVacationRequest\n\n**PK** ID : int\n**FK** EmployeeID : int → Employee.ID\nFromDate : date\nToDate : date\n**FK** StatusID : int → (справочник)"},
+		{"id":"n_unpaidvacationrequesthistory","type":"text","x":800,"y":800,"width":360,"height":150,"color":"5","text":"# UnpaidVacationRequestHistory\n\n**PK** ID : int\n**FK** RequestID : int → UnpaidVacationRequest.ID\nChangeDate : datetime"},
+		{"id":"n_unpaidvacationsendnotifyto","type":"text","x":800,"y":980,"width":360,"height":150,"color":"5","text":"# UnpaidVacationSendNotifyTo\n\n**PK** ID : int\n**FK** RequestID : int → UnpaidVacationRequest.ID\n**FK** EmployeeID : int → Employee.ID"},
+		{"id":"n_unpaidvacationtracking","type":"text","x":800,"y":1160,"width":360,"height":150,"color":"5","text":"# UnpaidVacationTracking\n\n**PK** ID : int\n**FK** EmployeeID : int → Employee.ID\n**FK** RequestID : int → UnpaidVacationRequest.ID"},
+		{"id":"n_sickdayrequest","type":"text","x":400,"y":1400,"width":360,"height":200,"color":"4","text":"# SickDayRequest\n\n**PK** ID : int\n**FK** EmployeeID : int → Employee.ID\nFromDate : date\nToDate : date\n**FK** StatusID : int → (справочник)"},
+		{"id":"n_sickdayrequesthistory","type":"text","x":800,"y":1400,"width":360,"height":150,"color":"5","text":"# SickDayRequestHistory\n\n**PK** ID : int\n**FK** RequestID : int → SickDayRequest.ID\nChangeDate : datetime"},
+		{"id":"n_sickdaysendnotifyto","type":"text","x":800,"y":1580,"width":360,"height":150,"color":"5","text":"# SickDaySendNotifyTo\n\n**PK** ID : int\n**FK** RequestID : int → SickDayRequest.ID\n**FK** EmployeeID : int → Employee.ID"},
+		{"id":"n_sickdaytracking","type":"text","x":800,"y":1760,"width":360,"height":150,"color":"5","text":"# SickDayTracking\n\n**PK** ID : int\n**FK** EmployeeID : int → Employee.ID\n**FK** RequestID : int → SickDayRequest.ID"},
+		{"id":"n_employee","type":"text","x":0,"y":400,"width":300,"height":160,"color":"4","text":"# Employee\n\n**PK** ID : int\nFirstName : nvarchar\nLastName : nvarchar\n... (см. группу 1)"}
+	],
+	"edges":[
+		{"id":"e_emp_vacationrequest","fromNode":"n_employee","fromSide":"right","toNode":"n_vacationrequest","toSide":"left","label":"1 : M","color":"1"},
+		{"id":"e_approve_employee","fromNode":"n_vacationrequest","fromSide":"bottom","toNode":"n_employee","toSide":"right","label":"M : 1 (утверждающий)","color":"1"},
+		{"id":"e_vacationrequest_history","fromNode":"n_vacationrequest","fromSide":"right","toNode":"n_vacationrequesthistory","toSide":"left","label":"1 : M","color":"5"},
+		{"id":"e_vacationrequest_status","fromNode":"n_vacationrequest","fromSide":"right","toNode":"n_vacationstatus","toSide":"left","label":"M : 1","color":"6"},
+		{"id":"e_vacationrequest_tracking","fromNode":"n_vacationrequest","fromSide":"right","toNode":"n_vacationtracking","toSide":"left","label":"1 : M","color":"5"},
+		{"id":"e_vacationrequest_notifyto","fromNode":"n_vacationrequest","fromSide":"right","toNode":"n_vacationsendnotifyto","toSide":"left","label":"1 : M","color":"5"},
+		{"id":"e_vacationtracking_employee","fromNode":"n_vacationtracking","fromSide":"right","toNode":"n_employee","toSide":"bottom","label":"M : 1","color":"1"},
+		{"id":"e_vacationsendnotifyto_employee","fromNode":"n_vacationsendnotifyto","fromSide":"right","toNode":"n_employee","toSide":"bottom","label":"M : 1","color":"1"},
+		{"id":"e_emp_unpaidvacation","fromNode":"n_employee","fromSide":"right","toNode":"n_unpaidvacationrequest","toSide":"left","label":"1 : M","color":"1"},
+		{"id":"e_unpaidvacation_history","fromNode":"n_unpaidvacationrequest","fromSide":"right","toNode":"n_unpaidvacationrequesthistory","toSide":"left","label":"1 : M","color":"5"},
+		{"id":"e_unpaidvacation_notifyto","fromNode":"n_unpaidvacationrequest","fromSide":"right","toNode":"n_unpaidvacationsendnotifyto","toSide":"left","label":"1 : M","color":"5"},
+		{"id":"e_unpaidvacation_tracking","fromNode":"n_unpaidvacationrequest","fromSide":"right","toNode":"n_unpaidvacationtracking","toSide":"left","label":"1 : M","color":"5"},
+		{"id":"e_unpaidvacationtracking_employee","fromNode":"n_unpaidvacationtracking","fromSide":"right","toNode":"n_employee","toSide":"bottom","label":"M : 1","color":"1"},
+		{"id":"e_unpaidvacationsendnotifyto_employee","fromNode":"n_unpaidvacationsendnotifyto","fromSide":"right","toNode":"n_employee","toSide":"bottom","label":"M : 1","color":"1"},
+		{"id":"e_emp_sickday","fromNode":"n_employee","fromSide":"right","toNode":"n_sickdayrequest","toSide":"left","label":"1 : M","color":"1"},
+		{"id":"e_sickday_history","fromNode":"n_sickdayrequest","fromSide":"right","toNode":"n_sickdayrequesthistory","toSide":"left","label":"1 : M","color":"5"},
+		{"id":"e_sickday_notifyto","fromNode":"n_sickdayrequest","fromSide":"right","toNode":"n_sickdaysendnotifyto","toSide":"left","label":"1 : M","color":"5"},
+		{"id":"e_sickday_tracking","fromNode":"n_sickdayrequest","fromSide":"right","toNode":"n_sickdaytracking","toSide":"left","label":"1 : M","color":"5"},
+		{"id":"e_sickdaytracking_employee","fromNode":"n_sickdaytracking","fromSide":"right","toNode":"n_employee","toSide":"bottom","label":"M : 1","color":"1"},
+		{"id":"e_sickdaysendnotifyto_employee","fromNode":"n_sickdaysendnotifyto","fromSide":"right","toNode":"n_employee","toSide":"bottom","label":"M : 1","color":"1"}
+	]
+}

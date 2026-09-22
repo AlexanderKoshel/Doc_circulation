@@ -1,0 +1,17 @@
+{
+	"nodes":[
+		{"id":"n_employeeaccess","type":"text","text":"# EmployeeAccess\n\n**PK** ID : int\n**FK** EmployeeID : int → Employee.ID\nAccess : nvarchar\nOpenDate : date\nCloseDate : date\nAccessName : nvarchar","x":400,"y":400,"width":420,"height":240,"color":"4"},
+		{"id":"n_employee","type":"text","text":"# Employee\n\n**PK** ID : int\nFirstName : nvarchar(256)\nLastName : nvarchar(256)\nFullNameOld : nvarchar(256)\n**FK** JobPositionID : int → JobPosition.ID\nDomainLogin : varchar(255) UNIQUE\nEmail : varchar(1000)\nActive : bit\n**FK** LocationID : int → Location.ID\n**FK** ExternalCompanyID : int\n**FK** DepartmentID : int → Department.ID\n**FK** SkillID : int → Skill.ID\nComment : nvarchar(2048)\nPhoto : image\nPhone : nvarchar(64)\nAlternativePhone : nvarchar(64)\nExtraEmail : nvarchar(128)\nFullName : nvarchar(514)\nTerminationDate : datetime\n**FK** ResidentialOfficeID : int → Location.ID","x":-620,"y":240,"width":420,"height":620,"color":"4"},
+		{"id":"n_employeeinfo","type":"text","text":"# EmployeeInfo\n\n**PK** ID : int\n**FK** EmployeeID : int → Employee.ID\nContactSkype : nvarchar\nContactPhoneWork : nvarchar\nSkypeForBusiness : nvarchar\nPortfolio : nvarchar\nContactTelegram : nvarchar","x":100,"y":-260,"width":450,"height":300,"color":"4"},
+		{"id":"n_employeesettings","type":"text","text":"# EmployeeSettings\n\n**PK** EmployeeID : int → Employee.ID","x":360,"y":120,"width":360,"height":180,"color":"4"},
+		{"id":"n_employeeskill","type":"text","text":"# EmployeeSkill\n\n**PK** ID : int\n**FK** EmployeeID : int → Employee.ID\n**FK** SkillID : int → Skill.ID\nProficiency : nvarchar\n**FK** LevelID : int → SkillLevel.ID\nIsMain : bit\nInfo : nvarchar","x":400,"y":750,"width":420,"height":290,"color":"4"},
+		{"id":"n_employeeroles","type":"text","text":"# EmployeeRoles\n\n**PK, FK** EmployeeID : int → Employee.ID\n**PK, FK** RoleID : int → Role.ID","x":40,"y":1080,"width":380,"height":200,"color":"4"}
+	],
+	"edges":[
+		{"id":"e_emp_info","fromNode":"n_employee","fromSide":"right","toNode":"n_employeeinfo","toSide":"left","color":"1","label":"1 : 1"},
+		{"id":"e_emp_settings","fromNode":"n_employee","fromSide":"right","toNode":"n_employeesettings","toSide":"left","color":"1","label":"1 : 1"},
+		{"id":"e_emp_access","fromNode":"n_employee","fromSide":"right","toNode":"n_employeeaccess","toSide":"left","color":"1","label":"1 : M"},
+		{"id":"e_emp_skill","fromNode":"n_employee","fromSide":"right","toNode":"n_employeeskill","toSide":"left","color":"1","label":"1 : M"},
+		{"id":"e_emp_roles","fromNode":"n_employee","fromSide":"right","toNode":"n_employeeroles","toSide":"left","color":"1","label":"1 : M"}
+	]
+}

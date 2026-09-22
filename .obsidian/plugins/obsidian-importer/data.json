@@ -1,0 +1,22 @@
+{
+  "secrets": {},
+  "outputLocations": {},
+  "outputSettings": {
+    "keep": {
+      "folder": "Google Keep",
+      "attachments": {
+        "mode": "vault",
+        "path": ""
+      },
+      "duplicates": "update",
+      "saveSourceId": true,
+      "template": "",
+      "titleTemplate": "{{title}}"
+    }
+  },
+  "onenoteAttachments": {},
+  "sourceFolders": {
+    "keep": "/home/alexander/Downloads"
+  },
+  "lastSourceFolder": "/home/alexander/Downloads"
+}

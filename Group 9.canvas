@@ -1,0 +1,25 @@
+{
+	"nodes":[
+		{"id":"n_industrytype","type":"text","x":0,"y":0,"width":280,"height":130,"color":"6","text":"# IndustryType\n\n**PK** ID : int\nName : nvarchar"},
+		{"id":"n_logintype","type":"text","x":0,"y":180,"width":280,"height":130,"color":"6","text":"# LoginType\n\n**PK** ID : int\nName : nvarchar"},
+		{"id":"n_phase","type":"text","x":0,"y":360,"width":280,"height":130,"color":"6","text":"# Phase\n\n**PK** ID : int\nName : nvarchar"},
+		{"id":"n_planmonth","type":"text","x":0,"y":540,"width":280,"height":130,"color":"6","text":"# PlanMonth\n\n**PK** ID : int\nMonth : int"},
+		{"id":"n_platformtype","type":"text","x":0,"y":720,"width":280,"height":130,"color":"6","text":"# PlatformType\n\n**PK** ID : int\nName : nvarchar"},
+		{"id":"n_provider","type":"text","x":0,"y":900,"width":280,"height":130,"color":"6","text":"# Provider\n\n**PK** ID : int\nName : nvarchar"},
+		{"id":"n_quote","type":"text","x":400,"y":0,"width":280,"height":130,"color":"6","text":"# Quote\n\n**PK** ID : int\nName : nvarchar"},
+		{"id":"n_ratetable","type":"text","x":400,"y":180,"width":300,"height":150,"color":"4","text":"# RateTable\n\n**PK** ID : int\nRate : decimal\n**FK** CurrencyID : int → (справочник валют)"},
+		{"id":"n_solution","type":"text","x":400,"y":380,"width":280,"height":130,"color":"6","text":"# Solution\n\n**PK** ID : int\nName : nvarchar"},
+		{"id":"n_solutioncategory","type":"text","x":400,"y":560,"width":300,"height":130,"color":"6","text":"# SolutionCategory\n\n**PK** ID : int\nName : nvarchar"},
+		{"id":"n_softwarecategory","type":"text","x":400,"y":740,"width":300,"height":130,"color":"6","text":"# SoftwareCategory\n\n**PK** ID : int\nName : nvarchar"},
+		{"id":"n_sourcecoderepositorytype","type":"text","x":400,"y":920,"width":340,"height":130,"color":"6","text":"# SourceCodeRepositoryType\n\n**PK** ID : int\nName : nvarchar"},
+		{"id":"n_test","type":"text","x":800,"y":0,"width":280,"height":130,"color":"6","text":"# Test\n\n**PK** ID : int\nName : nvarchar"},
+		{"id":"n_tmptbl","type":"text","x":800,"y":180,"width":280,"height":130,"color":"5","text":"# TmpTbl\n\n**PK** ID : int\nData : nvarchar"},
+		{"id":"n_triggertype","type":"text","x":800,"y":360,"width":280,"height":130,"color":"6","text":"# TriggerType\n\n**PK** ID : int\nName : nvarchar"},
+		{"id":"n_websitecategory","type":"text","x":800,"y":540,"width":300,"height":130,"color":"6","text":"# WebsiteCategory\n\n**PK** ID : int\nName : nvarchar"},
+		{"id":"n_notifyemployeelist","type":"text","x":800,"y":720,"width":320,"height":150,"color":"4","text":"# NotifyEmployeeList\n\n**PK** ID : int\n**FK** EmployeeID : int → Employee.ID\nNotifyType : nvarchar"},
+		{"id":"n_employee","type":"text","x":1200,"y":720,"width":300,"height":160,"color":"4","text":"# Employee\n\n**PK** ID : int\nFirstName : nvarchar\nLastName : nvarchar\n... (см. группу 1)"}
+	],
+	"edges":[
+		{"id":"e_notify_employee","fromNode":"n_notifyemployeelist","fromSide":"right","toNode":"n_employee","toSide":"left","label":"M : 1","color":"1"}
+	]
+}
