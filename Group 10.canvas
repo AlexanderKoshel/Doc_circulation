@@ -1,17 +1,4 @@
 {
-	"nodes":[
-		{"id":"n_reportingdates","type":"text","x":400,"y":0,"width":320,"height":140,"color":"4","text":"# ReportingDates\n\n**PK** ID : int\nReportDate : date"},
-		{"id":"n_reportingdatesstatus","type":"text","x":400,"y":200,"width":320,"height":130,"color":"6","text":"# ReportingDatesStatus\n\n**PK** ID : int\nName : nvarchar"},
-		{"id":"n_reportconfig","type":"text","x":400,"y":400,"width":320,"height":160,"color":"4","text":"# ReportConfig\n\n**PK** ID : int\nReportName : nvarchar\nConfig : nvarchar"},
-		{"id":"n_weekprojectoverhead","type":"text","x":400,"y":620,"width":360,"height":180,"color":"5","text":"# WeekProjectOverhead\n\n**PK, FK** WeekID : int → WorkingPeriod.ID\n**PK, FK** ProjectID : int → Project.ID\nOverhead : decimal"},
-		{"id":"n_workingperiod","type":"text","x":0,"y":620,"width":300,"height":140,"color":"6","text":"# WorkingPeriod\n\n**PK** ID : int\nStartDate : date\nEndDate : date"},
-		{"id":"n_workingperiodstatus","type":"text","x":0,"y":800,"width":300,"height":130,"color":"6","text":"# WorkingPeriodStatus\n\n**PK** ID : int\nName : nvarchar"},
-		{"id":"n_project","type":"text","x":800,"y":620,"width":300,"height":160,"color":"4","text":"# Project\n\n**PK** ID : int\nName : nvarchar\n... (см. группу 4)"}
-	],
-	"edges":[
-		{"id":"e_reportingdates_status","fromNode":"n_reportingdates","fromSide":"right","toNode":"n_reportingdatesstatus","toSide":"left","label":"M : 1","color":"6"},
-		{"id":"e_workingperiod_overhead","fromNode":"n_workingperiod","fromSide":"right","toNode":"n_weekprojectoverhead","toSide":"left","label":"1 : M","color":"5"},
-		{"id":"e_project_overhead","fromNode":"n_project","fromSide":"left","toNode":"n_weekprojectoverhead","toSide":"right","label":"1 : M","color":"1"},
-		{"id":"e_workingperiod_status","fromNode":"n_workingperiod","fromSide":"bottom","toNode":"n_workingperiodstatus","toSide":"top","label":"M : 1","color":"6"}
-	]
+	"nodes":[],
+	"edges":[]
 }
